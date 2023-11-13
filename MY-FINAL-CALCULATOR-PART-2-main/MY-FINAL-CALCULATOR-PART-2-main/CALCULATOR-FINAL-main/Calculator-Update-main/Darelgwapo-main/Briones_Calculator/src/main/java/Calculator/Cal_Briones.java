@@ -537,9 +537,8 @@ public class Cal_Briones extends javax.swing.JFrame {
     private void jbtnPlusMinusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnPlusMinusActionPerformed
         if (!currentNum.isEmpty()) {
         double num = Double.parseDouble(currentNum);
-        num = -num; // Negate the current number
+        num = -num; 
 
-        // Update the display with the negated number
         if (num % 1 == 0) {
             jLblDisplay.setText(String.format("%.0f", num));
         } else {
