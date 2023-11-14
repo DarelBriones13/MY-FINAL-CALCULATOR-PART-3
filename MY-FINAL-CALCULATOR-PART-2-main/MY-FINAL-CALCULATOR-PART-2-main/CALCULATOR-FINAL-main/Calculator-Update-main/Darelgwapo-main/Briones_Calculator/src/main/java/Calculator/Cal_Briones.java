@@ -15,6 +15,7 @@ public class Cal_Briones extends javax.swing.JFrame {
     private String operations = "";
     double secondnum;
     double result;
+    private boolean isPositive = true;
     
     public Cal_Briones() {
         initComponents();
@@ -535,18 +536,29 @@ public class Cal_Briones extends javax.swing.JFrame {
     }//GEN-LAST:event_jbtn0ActionPerformed
 
     private void jbtnPlusMinusActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnPlusMinusActionPerformed
-        if (!currentNum.isEmpty()) {
-        double num = Double.parseDouble(currentNum);
-        num = -num; 
+        if (!currentNum.isEmpty() && !currentNum.equals("0")) {
+            double num = Double.parseDouble(currentNum);
+            if (isPositive) {
+                num = -num;
+            } else {
+                num = Math.abs(num);
+            }
+             String formattedNum;
+                if (num == (int) num) {
+                    formattedNum = String.valueOf((int) num);
+                } else {
+                    formattedNum = String.valueOf(num);
+                }
 
-        if (num % 1 == 0) {
-            jLblDisplay.setText(String.format("%.0f", num));
-        } else {
-            jLblDisplay.setText(String.valueOf(num));
+            String labelText = jLblDisplay.getText();
+            int lastIndex = labelText.lastIndexOf(currentNum);
+            if (lastIndex != -1) {
+                String updatedExpression = labelText.substring(0, lastIndex) + formattedNum;
+                jLblDisplay.setText(updatedExpression);
+                currentNum = formattedNum;
+                isPositive = !isPositive;
+            }
         }
-
-        currentNum = Double.toString(num);
-    }
     }//GEN-LAST:event_jbtnPlusMinusActionPerformed
 
     private void jbtnDecimalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnDecimalActionPerformed
