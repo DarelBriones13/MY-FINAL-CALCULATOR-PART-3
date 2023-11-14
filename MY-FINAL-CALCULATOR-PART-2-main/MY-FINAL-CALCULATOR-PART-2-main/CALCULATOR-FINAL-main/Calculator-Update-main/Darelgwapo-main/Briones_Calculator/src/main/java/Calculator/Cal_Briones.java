@@ -550,8 +550,19 @@ public class Cal_Briones extends javax.swing.JFrame {
     }//GEN-LAST:event_jbtnPlusMinusActionPerformed
 
     private void jbtnDecimalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnDecimalActionPerformed
-        currentNum += jbtnDecimal.getText();
-        jLblDisplay.setText(jLblDisplay.getText() + jbtnDecimal.getText());
+        String decimal = jbtnDecimal.getText();
+    if (!currentNum.contains(decimal)) {
+        if (currentNum.isEmpty()) {
+            currentNum = "0" + decimal;
+            jLblDisplay.setText(jLblDisplay.getText() + "0" + decimal);
+        } else if (currentNum.equals("0")) {
+            currentNum += decimal;
+            jLblDisplay.setText(jLblDisplay.getText().replace("0", "0" + decimal));
+        } else {
+            currentNum += decimal;
+            jLblDisplay.setText(jLblDisplay.getText() + decimal);
+        }
+    } 
     }//GEN-LAST:event_jbtnDecimalActionPerformed
 
     private void jbtnEqualActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnEqualActionPerformed
