@@ -402,8 +402,7 @@ public class Cal_Briones extends javax.swing.JFrame {
             }
             break;
         case "%":
-            double percentageValue = secondnum;
-            result = percentageValue;
+            result %= secondnum;
             break;
     }
     }
@@ -446,13 +445,13 @@ public class Cal_Briones extends javax.swing.JFrame {
     private void jbtnPercentActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnPercentActionPerformed
         if (!currentNum.isEmpty()) {
         if (operations.isEmpty()) {
-            result = (Double.parseDouble(currentNum) / 100);
+            result = (Double.parseDouble(currentNum));
         } else {
-            double secondnum = (Double.parseDouble(currentNum) / 100);
+            double secondnum = (Double.parseDouble(currentNum));
             performOperation(operations, secondnum);
         }
         jLblDisplay.setText(jLblDisplay.getText() + "%");
-        currentNum = Double.toString(result);
+        currentNum = "";
         operations = "%";
     }
     }//GEN-LAST:event_jbtnPercentActionPerformed
